@@ -1,0 +1,26 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+
+<h2>  Fish Biological Collections </h2>
+  <form action="" method="POST">
+    {{ form.hidden_tag() }}
+    <img src="{{url_for('static', filename = 'images/fish.png')}}" class="link-success" alt="">
+    <h5 class="text-success"> Search Species of Fish</h5>
+    <p class="text-warning">Example: Red snapper, Sablefish</p>
+    <p>{{form.search.lable}} </p><br>
+    <p>{{form.search(size=40)}}</p>
+    <p> {{form.submit(class="btn btn-success")}} </p>
+{% if data %}
+<div class="card" style="width: 20rem;">
+  <img src="{{data[0]['Species Illustration Photo'].src}}" class="card-img-top" alt="...">
+  <div class="card-body, text-success">
+    <h5 class="card-title"> {{ data[0]["Species Name"] }} </h5>
+    <p class="card-text"> {{ data[0]['Habitat']}} </p>
+    <a href="{{url_for('social.collected')}}" class="btn btn-success">Collect</a>
+  </div>
+</div>
+
+{% endif %}
+</form>
+{% endblock %}

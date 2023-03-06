@@ -1,0 +1,37 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+ <h2>Liverstock</h2>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <p>
+        {{ form.classifications.label }} (example: mammal or bird)<br/>
+        {{ form.classifications(size=32)}}
+        {% for error in form.classifications.errors %}
+        <span> {{ error }} </span>
+        {% endfor %}
+        </p>
+        <p>
+        {{ form.species.label }} (example: ) <br/>
+        {{ form.species(size=32) }}
+        {% for error in form.species.errors %}
+        <span> {{ error }} </span>
+        {% endfor %}
+        </p>
+        <p>
+        {{ form.breed.label }}<br/>
+        {{ form.breed(size=32) }}
+        {% for error in form.breed.errors %}
+        <span> {{ error }} </span>
+        {% endfor %}
+        </p>
+        <p>
+        {{ form.date.label }}<br/>
+        {{ form.date(size=32) }}
+        {% for error in form.date.errors %}
+        <span> {{ error }} </span>
+        {% endfor %}
+        </p>
+        <p> {{ form.submit(class='btn btn-success') }}</p>
+    </form>
+{%  endblock %} 

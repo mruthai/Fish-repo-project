@@ -1,0 +1,11 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+
+    <div class="row q-col-gutter-md"></div>
+    <h4>Fish Biological Collections</h4>
+    {% for animal in pen['animals'] %}
+       <p class="text-success"> {{ animal }} </p> 
+    {% endfor %}
+
+{%  endblock %} 
