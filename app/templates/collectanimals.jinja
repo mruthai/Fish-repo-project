@@ -8,19 +8,25 @@
     <img src="{{url_for('static', filename = 'images/fish.png')}}" class="link-success" alt="">
     <h5 class="text-success"> Search Species of Fish</h5>
     <p class="text-warning">Example: Red snapper, Sablefish</p>
+    <a href="https://www.fisheries.noaa.gov/species-directory/sustainable-seafood?oq=&field_species_categories_vocab_1=2&field_species_categories_vocab=All&field_region_vocab=All&items_per_page=25" target="_blank" rel="noopener noreferrer"> Specifically looking for a Fish to collect? </a>
     <p>{{form.search.lable}} </p><br>
     <p>{{form.search(size=40)}}</p>
     <p> {{form.submit(class="btn btn-success")}} </p>
+    </form>
 {% if data %}
 <div class="card" style="width: 20rem;">
   <img src="{{data[0]['Species Illustration Photo'].src}}" class="card-img-top" alt="...">
   <div class="card-body, text-success">
     <h5 class="card-title"> {{ data[0]["Species Name"] }} </h5>
     <p class="card-text"> {{ data[0]['Habitat']}} </p>
-    <a href="{{url_for('social.collected')}}" class="btn btn-success">Collect</a>
+    <form action="{{url_for('social.collected')}}" method="POST">
+      <input type="hidden" name="name" value="{{ data['name']}}">
+      <button class="btn btn-success"> Collect </button>
+    </form>
   </div>
 </div>
 
 {% endif %}
-</form>
+
 {% endblock %}
+
